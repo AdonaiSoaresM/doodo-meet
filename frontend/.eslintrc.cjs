@@ -3,7 +3,11 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["standard-with-typescript", "plugin:vue/vue3-essential", "@typescript-eslint"],
+  extends: [
+    "eslint:recommended",
+    "plugin:vue/strongly-recommended",
+    "plugin:prettier/recommended",
+  ],
   overrides: [
     {
       env: {
@@ -20,8 +24,8 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["vue"],
-  rules: {
-    semi: ["error", "always"],
-    quotes: ["error", "double"],
-  },
+  // rules: {
+  //     semi: ['error', 'always'],
+  //     quotes: ['error', 'double'],
+  // },
 };
