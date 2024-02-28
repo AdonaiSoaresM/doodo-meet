@@ -4,8 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:vue/strongly-recommended",
+    "standard-with-typescript",
+    "plugin:vue/vue3-strongly-recommended",
     "plugin:prettier/recommended",
   ],
   overrides: [
