@@ -13,15 +13,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import svgVue from "../ui/svg.vue";
 
 export default defineComponent({
-  name: "Header",
   components: {
     Avatar,
     AvatarFallback,
     AvatarImage,
-    svgVue
   },
 });
 </script>
