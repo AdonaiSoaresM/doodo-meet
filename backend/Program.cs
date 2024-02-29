@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddKeycloakAuthConfiguration(builder.Configuration);
 builder.Services.AddUserRequestContext();
-
+builder.Services.AddDbContextConfiguration(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
