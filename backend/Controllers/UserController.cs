@@ -18,6 +18,7 @@ namespace backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Post()
         {
+            var a = HttpContext.User;
             await _addUserService.Handle();
             return NoContent();
         }

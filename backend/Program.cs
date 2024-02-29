@@ -21,6 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.ConfigureCORS(builder.Configuration);
 
 EFConfiguration.MigrateDatabase(builder.Configuration);
 
@@ -30,5 +31,4 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

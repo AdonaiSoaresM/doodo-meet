@@ -12,14 +12,15 @@
 import { defineComponent } from "vue";
 import Header from "@/components/home/header.vue";
 import Content from "@/components/home/content.vue";
+import UserService from "@/common/services/User";
 
 export default defineComponent({
   components: {
     Header,
     Content
   },
-  mounted(){
-    console.log(this.$keycloak)
+  mounted: async function(){
+    await UserService.post();
   },
 });
 </script>

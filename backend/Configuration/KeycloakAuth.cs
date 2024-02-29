@@ -37,9 +37,10 @@ public static class KeycloakAuth
 
             var userId = user?.Claims.FirstOrDefault(c => c.Properties.Any(p => p.Value == "sub"))?.Value;
             var userName = user?.Claims.FirstOrDefault(c => c.Properties.Any(p => p.Value == "name"))?.Value;
+            var givenName = user?.Claims.FirstOrDefault(c => c.Properties.Any(p => p.Value == "given_name"))?.Value;
             var email = user?.Claims.FirstOrDefault(c => c.Properties.Any(p => p.Value == "email"))?.Value;
 
-            return new UserRequestContext(userId, userName, email);
+            return new UserRequestContext(userId, userName ?? givenName, email);
         });
     }
 }
