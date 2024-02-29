@@ -18,5 +18,8 @@ export default defineComponent({
     Header,
     Content
   },
+  mounted(){
+    console.log(this.$keycloak)
+  },
 });
 </script>

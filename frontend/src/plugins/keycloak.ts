@@ -7,7 +7,7 @@ export default {
     app.config.globalProperties.$keycloak = new Keycloak({
       url: envs.VITE_KEYKLOAK_BASE_URL,
       realm: "myrealm",
-      clientId: "myclient",
+      clientId: "doodo-app"
     });
   },
 };

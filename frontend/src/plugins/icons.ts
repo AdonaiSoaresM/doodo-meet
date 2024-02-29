@@ -1,9 +1,10 @@
-import { mdiAccountMultiplePlus, mdiMessagePlus } from "@mdi/js";
+import { mdiAccountMultiplePlus, mdiMessagePlus, mdiExitToApp } from "@mdi/js";
 import { App } from "vue";
 
 const icons = {
   mdiAccountMultiplePlus,
   mdiMessagePlus,
+  mdiExitToApp,
 };
 
 export type Icons = typeof icons;

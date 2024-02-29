@@ -10,13 +10,23 @@
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
-    <TooltipProvider>
+    <TooltipProvider :delay-duration="100">
       <Tooltip>
         <TooltipTrigger>
           <svgVue color="white" :svg="$icons.mdiMessagePlus" />
         </TooltipTrigger>
         <TooltipContent>
           <p>Nova Chamada</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+    <TooltipProvider :delay-duration="100">
+      <Tooltip>
+        <TooltipTrigger @click="() => $keycloak.logout()">
+          <svgVue color="#a25362" :svg="$icons.mdiExitToApp" />
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Sair</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
