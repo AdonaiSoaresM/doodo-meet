@@ -23,6 +23,7 @@
     // Custom
 
     "baseUrl": ".",
+    "strictPropertyInitialization": false,
     "paths": {
       "@/*": ["./src/*"]
     }

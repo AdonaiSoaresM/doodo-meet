@@ -10,6 +10,7 @@
     "add-component": "npx shadcn-vue@latest add"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "keycloak-js": "^23.0.7",

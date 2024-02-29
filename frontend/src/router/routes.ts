@@ -1,9 +1,12 @@
 import HomeVue from "@/views/Home.vue";
-import LoginVue from "@/views/Login.vue";
+import { RouteRecordRaw } from "vue-router";
 
-const routes = [
-    { path: '/', component: HomeVue },
-    { path: '/login', component: LoginVue },
-  ]
+const routes: RouteRecordRaw[] = [
+  { path: "/", name: "Home", component: HomeVue },
+  {
+    path: '/:catchAll(.*)',
+    redirect: { name: "Home" },
+  },
+];
 
 export default routes;
