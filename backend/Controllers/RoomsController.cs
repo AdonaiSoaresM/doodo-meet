@@ -1,4 +1,4 @@
-using Infrastructure.Security;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,13 +7,19 @@ namespace backend.Controllers
     [ApiController]
     [Authorize]
     [Route("[controller]")]
-    public class RoomsController : ControllerBase
+    public class UserController : ControllerBase
     {
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<String> Get()
+        private readonly IAddUserService _addUserService;
+
+        public UserController(IAddUserService addUserService) {
+            _addUserService = addUserService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post()
         {
-            return Enumerable.Range(1, 5).Select(index => index.ToString())
-            .ToArray();
+            await _addUserService.Handle();
+            return NoContent();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Infrastructure.Security;
+﻿using Domain.Security;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;

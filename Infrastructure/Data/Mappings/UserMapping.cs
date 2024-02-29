@@ -15,5 +15,7 @@ public class UserMapping : IEntityTypeConfiguration<User>
 
         builder.Property(p => p.Email)
             .IsRequired();
+
+        builder.Property(p => p.Online);
     }
 }

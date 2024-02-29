@@ -11,6 +11,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddKeycloakAuthConfiguration(builder.Configuration);
 builder.Services.AddUserRequestContext();
 builder.Services.AddDbContextConfiguration(builder.Configuration);
+builder.Services.AddDependecyInjection();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+EFConfiguration.MigrateDatabase(builder.Configuration);
 
 app.UseHttpsRedirection();
 
