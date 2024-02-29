@@ -1,15 +1,13 @@
 <template lang="">
-    <div>
-        Home
-    </div>
+  <div>Home</div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-    name: 'Home',
-    setup() {
-        return {};
-    },
+  name: "Home",
+  mounted() {
+    this.$router.push("/login")
+  },
 });
 </script>

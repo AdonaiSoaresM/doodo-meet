@@ -12,6 +12,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "keycloak-js": "^23.0.7",
     "lucide-vue-next": "^0.343.0",
     "radix-vue": "^1.4.9",
     "tailwind-merge": "^2.2.1",

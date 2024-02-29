@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     "standard-with-typescript",
+    "@typescript-eslint",
     "plugin:vue/vue3-strongly-recommended",
     "plugin:prettier/recommended",
   ],
@@ -23,9 +24,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
+  ignorePatterns: ["**/*.d.ts"],
   plugins: ["vue"],
-  // rules: {
-  //     semi: ['error', 'always'],
-  //     quotes: ['error', 'double'],
-  // },
 };
