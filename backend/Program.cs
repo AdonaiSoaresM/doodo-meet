@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddKeycloakAuthConfiguration(builder.Configuration);
+builder.Services.AddUserRequestContext();
 
 var app = builder.Build();
 
