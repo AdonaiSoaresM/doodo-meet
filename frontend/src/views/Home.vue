@@ -21,6 +21,7 @@ export default defineComponent({
   },
   mounted: async function(){
     await UserService.post();
+    await this.$websocket.start();
   },
 });
 </script>

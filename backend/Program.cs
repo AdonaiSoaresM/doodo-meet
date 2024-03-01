@@ -1,4 +1,5 @@
 using backend.Configuration;
+using backend.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddKeycloakAuthConfiguration(builder.Configuration);
 builder.Services.AddUserRequestContext();
 builder.Services.AddDbContextConfiguration(builder.Configuration);
 builder.Services.AddDependecyInjection();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -30,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<AppHub>("/hub");
 app.MapControllers();
+
 app.Run();
