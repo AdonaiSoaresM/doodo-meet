@@ -2,6 +2,7 @@
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 using Keycloak.AuthServices.Sdk.Admin;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace backend.Configuration;
 
@@ -13,7 +14,25 @@ public static class KeycloakAuth
                                     .GetSection(KeycloakAuthenticationOptions.Section)
                                     .Get<KeycloakAuthenticationOptions>();
 
-        services.AddKeycloakAuthentication(authenticationOptions!);
+        services.AddKeycloakAuthentication(authenticationOptions!, options =>
+        {
+            options.Authority = "http://localhost:8080/realms/myrealm/";
+            options.Events = new JwtBearerEvents
+            {
+                OnMessageReceived = context =>
+                {
+                    var accessToken = context.Request.Query["access_token"];
+
+                    var path = context.HttpContext.Request.Path;
+                    if (!string.IsNullOrEmpty(accessToken) &&
+                        (path.StartsWithSegments("/hub")))
+                    {
+                        context.Token = accessToken;
+                    }
+                    return Task.CompletedTask;
+                }
+            };
+        });
 
         var authorizationOptions = configuration
                                     .GetSection(KeycloakProtectionClientOptions.Section)

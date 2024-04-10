@@ -1,7 +1,7 @@
 <template lang="">
   <div class="relative flex items-center justify-center w-full h-full">
     <div
-      class="w-[500px] h-full bg-white home-content shadow-2xl shadow-zinc-200 flex flex-col"
+      class="w-[500px] h-full bg-white home-content shadow-2xl  flex flex-col"
     >
       <Header />
       <Content />
@@ -20,8 +20,14 @@ export default defineComponent({
     Content
   },
   mounted: async function(){
-    await UserService.post();
     await this.$websocket.start();
+    await UserService.invoke_user();
+    // this.$websocket.sendId(this.$keycloak.subject!)
+    // this.$websocket.sendMessage(this.$keycloak.subject!, "fala");
+
+    // this.$websocket.connection.on("ReceiveMessage", (message: string) => {
+    //   console.log("Chegou: ", message);
+    // })
   },
 });
 </script>

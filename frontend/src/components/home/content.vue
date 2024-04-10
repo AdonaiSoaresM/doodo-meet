@@ -2,29 +2,32 @@
   <div class="relative flex flex-1 w-full div-content">
     <img class="absolute z-0 w-full h-full img-content" />
     <div class="z-10 flex flex-col w-full gap-4 px-8 py-6 overflow-scroll">
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
-      <ContentCards />
+      <ContentCards v-for="user in users" :user="user"/>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import ContentCards from "./content-cards.vue";
+import UserService from "@/common/services/User";
+import { ListUserViewModel } from "@/common/services/types";
 
 export default defineComponent({
   components: {
     ContentCards,
+  },
+  data() {
+    return {
+      users: [] as ListUserViewModel[],
+    }
+  },
+  mounted(){
+    this.getUsers();
+  },
+  methods: {
+    getUsers: async function(){
+      this.users = await UserService.list();
+    },
   },
 });
 </script>

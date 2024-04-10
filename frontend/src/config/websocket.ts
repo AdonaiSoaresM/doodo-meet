@@ -3,34 +3,43 @@ import {
   LogLevel,
   IHttpConnectionOptions,
   HttpTransportType,
-  HubConnection,
+  HubConnection
 } from "@microsoft/signalr";
 import { envs } from "./envs";
 
 export class SignalR {
-  private connection: HubConnection;
+  public connection: HubConnection;
 
   private auth_token: string;
 
   private options: IHttpConnectionOptions = {
     accessTokenFactory: () => this.auth_token,
+    withCredentials: true,
     transport: HttpTransportType.WebSockets,
+    skipNegotiation: true,
+
   };
 
   configure() {
     this.connection = new HubConnectionBuilder()
       .withUrl(envs.VITE_BACKEND_HUB_URL, this.options)
-      .configureLogging(LogLevel.Information)
+      .configureLogging(LogLevel.Debug)
       .build();
   }
 
   async start() {
     await this.connection.start();
-    console.log("SignalR Connected.");
   }
 
   set_token(AUTH_TOKEN: string) {
-    this.auth_token = `Bearer ${AUTH_TOKEN}`;
-    console.log("SignalR Token Set.");
+    this.auth_token = `${AUTH_TOKEN}`;
+  }
+
+  sendMessage(userId: string, message: string) {
+    this.connection.invoke("SendMessage", userId, message);
+  }
+
+  sendId(id: string) {
+    this.connection.invoke("SendId", id);
   }
 }

@@ -2,6 +2,7 @@
 using Domain.Interfaces;
 using Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories;
 
@@ -31,9 +32,9 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         return await Dbset.FirstOrDefaultAsync(e => e.Id == id);
     }
 
-    public async Task<IEnumerable<TEntity>> List()
+    public async Task<IEnumerable<TEntity>> ListAsync(Expression<Func<TEntity, bool>>? predicate = null)
     {
-        return await Dbset.ToListAsync();
+        return predicate == null ? await Dbset.ToListAsync() : await Dbset.Where(predicate).ToListAsync();
     }
 
     public IQueryable<TEntity> Query()
